@@ -9,13 +9,13 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
- * A Message.
+ * A Activity.
  */
 @Entity
-@Table(name = "message")
+@Table(name = "activity")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @SuppressWarnings("common-java:DuplicatedBlocks")
-public class Message implements Serializable {
+public class Activity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -25,15 +25,10 @@ public class Message implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "texte")
-    private String texte;
+    @Column(name = "image_acivity")
+    private String imageAcivity;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "message")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "user", "message" }, allowSetters = true)
-    private Set<Reaction> reactions = new HashSet<>();
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "message")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "activities")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(value = { "users", "activities", "message" }, allowSetters = true)
     private Set<Conversation> conversations = new HashSet<>();
@@ -44,7 +39,7 @@ public class Message implements Serializable {
         return this.id;
     }
 
-    public Message id(Long id) {
+    public Activity id(Long id) {
         this.setId(id);
         return this;
     }
@@ -53,48 +48,17 @@ public class Message implements Serializable {
         this.id = id;
     }
 
-    public String getTexte() {
-        return this.texte;
+    public String getImageAcivity() {
+        return this.imageAcivity;
     }
 
-    public Message texte(String texte) {
-        this.setTexte(texte);
+    public Activity imageAcivity(String imageAcivity) {
+        this.setImageAcivity(imageAcivity);
         return this;
     }
 
-    public void setTexte(String texte) {
-        this.texte = texte;
-    }
-
-    public Set<Reaction> getReactions() {
-        return this.reactions;
-    }
-
-    public void setReactions(Set<Reaction> reactions) {
-        if (this.reactions != null) {
-            this.reactions.forEach(i -> i.setMessage(null));
-        }
-        if (reactions != null) {
-            reactions.forEach(i -> i.setMessage(this));
-        }
-        this.reactions = reactions;
-    }
-
-    public Message reactions(Set<Reaction> reactions) {
-        this.setReactions(reactions);
-        return this;
-    }
-
-    public Message addReactions(Reaction reaction) {
-        this.reactions.add(reaction);
-        reaction.setMessage(this);
-        return this;
-    }
-
-    public Message removeReactions(Reaction reaction) {
-        this.reactions.remove(reaction);
-        reaction.setMessage(null);
-        return this;
+    public void setImageAcivity(String imageAcivity) {
+        this.imageAcivity = imageAcivity;
     }
 
     public Set<Conversation> getConversations() {
@@ -103,28 +67,28 @@ public class Message implements Serializable {
 
     public void setConversations(Set<Conversation> conversations) {
         if (this.conversations != null) {
-            this.conversations.forEach(i -> i.setMessage(null));
+            this.conversations.forEach(i -> i.removeActivities(this));
         }
         if (conversations != null) {
-            conversations.forEach(i -> i.setMessage(this));
+            conversations.forEach(i -> i.addActivities(this));
         }
         this.conversations = conversations;
     }
 
-    public Message conversations(Set<Conversation> conversations) {
+    public Activity conversations(Set<Conversation> conversations) {
         this.setConversations(conversations);
         return this;
     }
 
-    public Message addConversations(Conversation conversation) {
+    public Activity addConversations(Conversation conversation) {
         this.conversations.add(conversation);
-        conversation.setMessage(this);
+        conversation.getActivities().add(this);
         return this;
     }
 
-    public Message removeConversations(Conversation conversation) {
+    public Activity removeConversations(Conversation conversation) {
         this.conversations.remove(conversation);
-        conversation.setMessage(null);
+        conversation.getActivities().remove(this);
         return this;
     }
 
@@ -135,10 +99,10 @@ public class Message implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof Message)) {
+        if (!(o instanceof Activity)) {
             return false;
         }
-        return getId() != null && getId().equals(((Message) o).getId());
+        return getId() != null && getId().equals(((Activity) o).getId());
     }
 
     @Override
@@ -150,9 +114,9 @@ public class Message implements Serializable {
     // prettier-ignore
     @Override
     public String toString() {
-        return "Message{" +
+        return "Activity{" +
             "id=" + getId() +
-            ", texte='" + getTexte() + "'" +
+            ", imageAcivity='" + getImageAcivity() + "'" +
             "}";
     }
 }

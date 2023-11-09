@@ -28,6 +28,15 @@
             </span>
           </dd>
           <dt>
+            <span v-text="t$('messengerJHibsterApp.conversation.activities')"></span>
+          </dt>
+          <dd>
+            <span v-for="(activities, i) in conversation.activities" :key="activities.id"
+              >{{ i > 0 ? ', ' : '' }}
+              <router-link :to="{ name: 'ActivityView', params: { activityId: activities.id } }">{{ activities.id }}</router-link>
+            </span>
+          </dd>
+          <dt>
             <span v-text="t$('messengerJHibsterApp.conversation.message')"></span>
           </dt>
           <dd>

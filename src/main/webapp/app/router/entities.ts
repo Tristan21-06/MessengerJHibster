@@ -7,6 +7,10 @@ const Message = () => import('@/entities/message/message.vue');
 const MessageUpdate = () => import('@/entities/message/message-update.vue');
 const MessageDetails = () => import('@/entities/message/message-details.vue');
 
+const Activity = () => import('@/entities/activity/activity.vue');
+const ActivityUpdate = () => import('@/entities/activity/activity-update.vue');
+const ActivityDetails = () => import('@/entities/activity/activity-details.vue');
+
 const Reaction = () => import('@/entities/reaction/reaction.vue');
 const ReactionUpdate = () => import('@/entities/reaction/reaction-update.vue');
 const ReactionDetails = () => import('@/entities/reaction/reaction-details.vue');
@@ -43,6 +47,30 @@ export default {
       path: 'message/:messageId/view',
       name: 'MessageView',
       component: MessageDetails,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'activity',
+      name: 'Activity',
+      component: Activity,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'activity/new',
+      name: 'ActivityCreate',
+      component: ActivityUpdate,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'activity/:activityId/edit',
+      name: 'ActivityEdit',
+      component: ActivityUpdate,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'activity/:activityId/view',
+      name: 'ActivityView',
+      component: ActivityDetails,
       meta: { authorities: [Authority.USER] },
     },
     {

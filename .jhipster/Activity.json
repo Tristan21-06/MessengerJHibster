@@ -1,0 +1,24 @@
+{
+  "applications": "*",
+  "changelogDate": "20231109112504",
+  "dto": "mapstruct",
+  "entityTableName": "activity",
+  "fields": [
+    {
+      "fieldName": "imageAcivity",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Activity",
+  "relationships": [
+    {
+      "otherEntityName": "conversation",
+      "otherEntityRelationshipName": "activities",
+      "relationshipName": "conversations",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}
