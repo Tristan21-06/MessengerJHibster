@@ -21,6 +21,10 @@ relationship OneToMany {
     Message{conversations} to Conversation
 }
 
+relationship OneToOne {
+	Reaction{user} to User
+}
+
 
 dto all with mapstruct
 service all with serviceImpl
