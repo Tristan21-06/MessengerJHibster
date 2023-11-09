@@ -1,0 +1,31 @@
+entity Message {
+	texte String
+}
+
+enum ReactionType {
+	SMILE, SAD, HEART, THUMBSUP
+}
+
+entity Reaction {
+	type ReactionType
+}
+
+entity Conversation {
+	name String
+    color String
+}
+
+relationship OneToMany {
+	// messages
+    Message{reactions} to Reaction
+    Message{conversations} to Conversation
+}
+
+relationship OneToOne {
+    
+    // messages
+    Message to Message
+}
+
+dto all with mapstruct
+service all with serviceImpl
