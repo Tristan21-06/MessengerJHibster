@@ -19,9 +19,14 @@ entity Conversation {
     color String
 }
 
+entity Activity {
+	imageAcivity String
+}
+
 relationship ManyToMany {
 	// conversations
 	Conversation{users} to User{conversations}
+    Conversation{activities} to Activity{conversations}
 }
 
 relationship OneToMany {
