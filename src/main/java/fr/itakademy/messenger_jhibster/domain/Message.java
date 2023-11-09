@@ -30,12 +30,12 @@ public class Message implements Serializable {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "message")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "message" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "user", "message" }, allowSetters = true)
     private Set<Reaction> reactions = new HashSet<>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "message")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "message" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "users", "message" }, allowSetters = true)
     private Set<Conversation> conversations = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

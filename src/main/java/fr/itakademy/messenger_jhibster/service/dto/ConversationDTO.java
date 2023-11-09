@@ -1,7 +1,9 @@
 package fr.itakademy.messenger_jhibster.service.dto;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A DTO for the {@link fr.itakademy.messenger_jhibster.domain.Conversation} entity.
@@ -14,6 +16,8 @@ public class ConversationDTO implements Serializable {
     private String name;
 
     private String color;
+
+    private Set<UserDTO> users = new HashSet<>();
 
     private MessageDTO message;
 
@@ -39,6 +43,14 @@ public class ConversationDTO implements Serializable {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public Set<UserDTO> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<UserDTO> users) {
+        this.users = users;
     }
 
     public MessageDTO getMessage() {
@@ -77,6 +89,7 @@ public class ConversationDTO implements Serializable {
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", color='" + getColor() + "'" +
+            ", users=" + getUsers() +
             ", message=" + getMessage() +
             "}";
     }

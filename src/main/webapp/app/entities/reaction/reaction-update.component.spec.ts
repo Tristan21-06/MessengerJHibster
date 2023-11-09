@@ -8,6 +8,7 @@ import ReactionUpdate from './reaction-update.vue';
 import ReactionService from './reaction.service';
 import AlertService from '@/shared/alert/alert.service';
 
+import UserService from '@/entities/user/user.service';
 import MessageService from '@/entities/message/message.service';
 
 type ReactionUpdateComponentType = InstanceType<typeof ReactionUpdate>;
@@ -53,6 +54,11 @@ describe('Component Tests', () => {
         provide: {
           alertService,
           reactionService: () => reactionServiceStub,
+
+          userService: () =>
+            sinon.createStubInstance<UserService>(UserService, {
+              retrieve: sinon.stub().resolves({}),
+            } as any),
           messageService: () =>
             sinon.createStubInstance<MessageService>(MessageService, {
               retrieve: sinon.stub().resolves({}),

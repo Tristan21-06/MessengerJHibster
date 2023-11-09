@@ -13,6 +13,12 @@
             <span v-text="t$('messengerJHibsterApp.ReactionType.' + reaction.type)"></span>
           </dd>
           <dt>
+            <span v-text="t$('messengerJHibsterApp.reaction.user')"></span>
+          </dt>
+          <dd>
+            {{ reaction.user ? reaction.user.id : '' }}
+          </dd>
+          <dt>
             <span v-text="t$('messengerJHibsterApp.reaction.message')"></span>
           </dt>
           <dd>

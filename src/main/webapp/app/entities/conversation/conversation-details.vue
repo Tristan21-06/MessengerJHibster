@@ -19,6 +19,15 @@
             <span>{{ conversation.color }}</span>
           </dd>
           <dt>
+            <span v-text="t$('messengerJHibsterApp.conversation.users')"></span>
+          </dt>
+          <dd>
+            <span v-for="(users, i) in conversation.users" :key="users.id"
+              >{{ i > 0 ? ', ' : '' }}
+              {{ users.id }}
+            </span>
+          </dd>
+          <dt>
             <span v-text="t$('messengerJHibsterApp.conversation.message')"></span>
           </dt>
           <dd>

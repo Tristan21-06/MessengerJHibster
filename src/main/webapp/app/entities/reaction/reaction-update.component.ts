@@ -7,6 +7,7 @@ import ReactionService from './reaction.service';
 import { useValidation } from '@/shared/composables';
 import { useAlertService } from '@/shared/alert/alert.service';
 
+import UserService from '@/entities/user/user.service';
 import MessageService from '@/entities/message/message.service';
 import { type IMessage } from '@/shared/model/message.model';
 import { type IReaction, Reaction } from '@/shared/model/reaction.model';
@@ -20,6 +21,8 @@ export default defineComponent({
     const alertService = inject('alertService', () => useAlertService(), true);
 
     const reaction: Ref<IReaction> = ref(new Reaction());
+    const userService = inject('userService', () => new UserService());
+    const users: Ref<Array<any>> = ref([]);
 
     const messageService = inject('messageService', () => new MessageService());
 
@@ -47,6 +50,11 @@ export default defineComponent({
     }
 
     const initRelationships = () => {
+      userService()
+        .retrieve()
+        .then(res => {
+          users.value = res.data;
+        });
       messageService()
         .retrieve()
         .then(res => {
@@ -60,6 +68,7 @@ export default defineComponent({
     const validations = useValidation();
     const validationRules = {
       type: {},
+      user: {},
       message: {},
     };
     const v$ = useVuelidate(validationRules, reaction as any);
@@ -73,6 +82,7 @@ export default defineComponent({
       reactionTypeValues,
       isSaving,
       currentLanguage,
+      users,
       messages,
       v$,
       t$,

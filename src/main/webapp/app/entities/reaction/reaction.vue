@@ -30,6 +30,7 @@
           <tr>
             <th scope="row"><span v-text="t$('global.field.id')"></span></th>
             <th scope="row"><span v-text="t$('messengerJHibsterApp.reaction.type')"></span></th>
+            <th scope="row"><span v-text="t$('messengerJHibsterApp.reaction.user')"></span></th>
             <th scope="row"><span v-text="t$('messengerJHibsterApp.reaction.message')"></span></th>
             <th scope="row"></th>
           </tr>
@@ -40,6 +41,9 @@
               <router-link :to="{ name: 'ReactionView', params: { reactionId: reaction.id } }">{{ reaction.id }}</router-link>
             </td>
             <td v-text="t$('messengerJHibsterApp.ReactionType.' + reaction.type)"></td>
+            <td>
+              {{ reaction.user ? reaction.user.id : '' }}
+            </td>
             <td>
               <div v-if="reaction.message">
                 <router-link :to="{ name: 'MessageView', params: { messageId: reaction.message.id } }">{{

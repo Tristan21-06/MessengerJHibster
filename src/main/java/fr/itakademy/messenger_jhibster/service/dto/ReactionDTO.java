@@ -14,6 +14,8 @@ public class ReactionDTO implements Serializable {
 
     private ReactionType type;
 
+    private UserDTO user;
+
     private MessageDTO message;
 
     public Long getId() {
@@ -30,6 +32,14 @@ public class ReactionDTO implements Serializable {
 
     public void setType(ReactionType type) {
         this.type = type;
+    }
+
+    public UserDTO getUser() {
+        return user;
+    }
+
+    public void setUser(UserDTO user) {
+        this.user = user;
     }
 
     public MessageDTO getMessage() {
@@ -67,6 +77,7 @@ public class ReactionDTO implements Serializable {
         return "ReactionDTO{" +
             "id=" + getId() +
             ", type='" + getType() + "'" +
+            ", user=" + getUser() +
             ", message=" + getMessage() +
             "}";
     }

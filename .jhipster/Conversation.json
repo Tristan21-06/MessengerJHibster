@@ -14,7 +14,15 @@
     }
   ],
   "name": "Conversation",
-  "relationships": [],
+  "relationships": [
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "conversations",
+      "relationshipName": "users",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-many"
+    }
+  ],
   "searchEngine": "no",
   "service": "serviceImpl"
 }
