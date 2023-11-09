@@ -1,0 +1,20 @@
+entity Message {
+	texte String required
+}
+
+entity Reaction {
+	type String
+}
+
+entity Conversation {
+	name String
+    color String
+}
+
+relationship OneToMany {
+    Message{reactions} to Reaction
+    Message{conversations} to Conversation
+}
+
+dto all with mapstruct
+service all with serviceImpl
