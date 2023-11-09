@@ -33,6 +33,7 @@ relationship OneToMany {
 relationship OneToOne {
 	// réactions
     Reaction{user} to User
+    Message to Message
 }
 
 dto all with mapstruct
