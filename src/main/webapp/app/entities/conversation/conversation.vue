@@ -32,6 +32,7 @@
             <th scope="row"><span v-text="t$('messengerJHibsterApp.conversation.name')"></span></th>
             <th scope="row"><span v-text="t$('messengerJHibsterApp.conversation.color')"></span></th>
             <th scope="row"><span v-text="t$('messengerJHibsterApp.conversation.users')"></span></th>
+            <th scope="row"><span v-text="t$('messengerJHibsterApp.conversation.activities')"></span></th>
             <th scope="row"><span v-text="t$('messengerJHibsterApp.conversation.message')"></span></th>
             <th scope="row"></th>
           </tr>
@@ -49,6 +50,14 @@
               <span v-for="(users, i) in conversation.users" :key="users.id"
                 >{{ i > 0 ? ', ' : '' }}
                 {{ users.id }}
+              </span>
+            </td>
+            <td>
+              <span v-for="(activities, i) in conversation.activities" :key="activities.id"
+                >{{ i > 0 ? ', ' : '' }}
+                <router-link class="form-control-static" :to="{ name: 'ActivityView', params: { activityId: activities.id } }">{{
+                  activities.id
+                }}</router-link>
               </span>
             </td>
             <td>

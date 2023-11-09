@@ -8,6 +8,8 @@ import { useValidation } from '@/shared/composables';
 import { useAlertService } from '@/shared/alert/alert.service';
 
 import UserService from '@/entities/user/user.service';
+import ActivityService from '@/entities/activity/activity.service';
+import { type IActivity } from '@/shared/model/activity.model';
 import MessageService from '@/entities/message/message.service';
 import { type IMessage } from '@/shared/model/message.model';
 import { type IConversation, Conversation } from '@/shared/model/conversation.model';
@@ -22,6 +24,10 @@ export default defineComponent({
     const conversation: Ref<IConversation> = ref(new Conversation());
     const userService = inject('userService', () => new UserService());
     const users: Ref<Array<any>> = ref([]);
+
+    const activityService = inject('activityService', () => new ActivityService());
+
+    const activities: Ref<IActivity[]> = ref([]);
 
     const messageService = inject('messageService', () => new MessageService());
 
@@ -53,6 +59,11 @@ export default defineComponent({
         .then(res => {
           users.value = res.data;
         });
+      activityService()
+        .retrieve()
+        .then(res => {
+          activities.value = res.data;
+        });
       messageService()
         .retrieve()
         .then(res => {
@@ -68,6 +79,7 @@ export default defineComponent({
       name: {},
       color: {},
       users: {},
+      activities: {},
       message: {},
     };
     const v$ = useVuelidate(validationRules, conversation as any);
@@ -81,6 +93,7 @@ export default defineComponent({
       isSaving,
       currentLanguage,
       users,
+      activities,
       messages,
       v$,
       t$,
@@ -88,6 +101,7 @@ export default defineComponent({
   },
   created(): void {
     this.conversation.users = [];
+    this.conversation.activities = [];
   },
   methods: {
     save(): void {
