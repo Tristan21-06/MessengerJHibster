@@ -1,0 +1,29 @@
+{
+  "applications": "*",
+  "changelogDate": "20231109112504",
+  "dto": "mapstruct",
+  "entityTableName": "message",
+  "fields": [
+    {
+      "fieldName": "texte",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Message",
+  "relationships": [
+    {
+      "otherEntityName": "reaction",
+      "relationshipName": "reactions",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "conversation",
+      "relationshipName": "conversations",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

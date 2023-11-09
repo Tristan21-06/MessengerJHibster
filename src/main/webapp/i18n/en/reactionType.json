@@ -1,0 +1,11 @@
+{
+  "messengerJHibsterApp": {
+    "ReactionType": {
+      "null": "",
+      "SMILE": "SMILE",
+      "SAD": "SAD",
+      "HEART": "HEART",
+      "THUMBSUP": "THUMBSUP"
+    }
+  }
+}
