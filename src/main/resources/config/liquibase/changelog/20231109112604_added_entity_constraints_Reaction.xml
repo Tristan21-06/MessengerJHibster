@@ -8,6 +8,13 @@
     -->
     <changeSet id="20231109112604-2" author="jhipster">
 
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="reaction"
+                                 constraintName="fk_reaction__user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"
+                                 />
+
         <addForeignKeyConstraint baseColumnNames="message_id"
                                  baseTableName="reaction"
                                  constraintName="fk_reaction__message_id"

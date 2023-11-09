@@ -11,6 +11,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -70,11 +72,15 @@ public class ConversationServiceImpl implements ConversationService {
         return conversationRepository.findAll().stream().map(conversationMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
     }
 
+    public Page<ConversationDTO> findAllWithEagerRelationships(Pageable pageable) {
+        return conversationRepository.findAllWithEagerRelationships(pageable).map(conversationMapper::toDto);
+    }
+
     @Override
     @Transactional(readOnly = true)
     public Optional<ConversationDTO> findOne(Long id) {
         log.debug("Request to get Conversation : {}", id);
-        return conversationRepository.findById(id).map(conversationMapper::toDto);
+        return conversationRepository.findOneWithEagerRelationships(id).map(conversationMapper::toDto);
     }
 
     @Override

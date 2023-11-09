@@ -20,6 +20,7 @@
       "id": "ID",
       "name": "Name",
       "color": "Color",
+      "users": "Users",
       "message": "Message"
     }
   }

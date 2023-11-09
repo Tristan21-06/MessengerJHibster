@@ -28,6 +28,11 @@ public class Reaction implements Serializable {
     @Column(name = "type")
     private ReactionType type;
 
+    @JsonIgnoreProperties(value = { "conversations" }, allowSetters = true)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(unique = true)
+    private User user;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = { "reactions", "conversations" }, allowSetters = true)
     private Message message;
@@ -58,6 +63,19 @@ public class Reaction implements Serializable {
 
     public void setType(ReactionType type) {
         this.type = type;
+    }
+
+    public User getUser() {
+        return this.user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Reaction user(User user) {
+        this.setUser(user);
+        return this;
     }
 
     public Message getMessage() {

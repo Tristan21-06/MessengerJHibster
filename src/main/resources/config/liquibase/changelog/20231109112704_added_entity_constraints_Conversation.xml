@@ -8,6 +8,20 @@
     -->
     <changeSet id="20231109112704-2" author="jhipster">
 
+        <addForeignKeyConstraint baseColumnNames="conversation_id"
+                                 baseTableName="rel_conversation__users"
+                                 constraintName="fk_rel_conversation__users__conversation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="conversation"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="users_id"
+                                 baseTableName="rel_conversation__users"
+                                 constraintName="fk_rel_conversation__users__users_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"
+                                 />
+
         <addForeignKeyConstraint baseColumnNames="message_id"
                                  baseTableName="conversation"
                                  constraintName="fk_conversation__message_id"

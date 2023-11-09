@@ -37,6 +37,22 @@
             />
           </div>
           <div class="form-group">
+            <label v-text="t$('messengerJHibsterApp.conversation.users')" for="conversation-users"></label>
+            <select
+              class="form-control"
+              id="conversation-users"
+              data-cy="users"
+              multiple
+              name="users"
+              v-if="conversation.users !== undefined"
+              v-model="conversation.users"
+            >
+              <option v-bind:value="getSelected(conversation.users, userOption)" v-for="userOption in users" :key="userOption.id">
+                {{ userOption.id }}
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
             <label class="form-control-label" v-text="t$('messengerJHibsterApp.conversation.message')" for="conversation-message"></label>
             <select class="form-control" id="conversation-message" data-cy="message" name="message" v-model="conversation.message">
               <option v-bind:value="null"></option>

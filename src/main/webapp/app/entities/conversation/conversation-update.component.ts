@@ -7,6 +7,7 @@ import ConversationService from './conversation.service';
 import { useValidation } from '@/shared/composables';
 import { useAlertService } from '@/shared/alert/alert.service';
 
+import UserService from '@/entities/user/user.service';
 import MessageService from '@/entities/message/message.service';
 import { type IMessage } from '@/shared/model/message.model';
 import { type IConversation, Conversation } from '@/shared/model/conversation.model';
@@ -19,6 +20,8 @@ export default defineComponent({
     const alertService = inject('alertService', () => useAlertService(), true);
 
     const conversation: Ref<IConversation> = ref(new Conversation());
+    const userService = inject('userService', () => new UserService());
+    const users: Ref<Array<any>> = ref([]);
 
     const messageService = inject('messageService', () => new MessageService());
 
@@ -45,6 +48,11 @@ export default defineComponent({
     }
 
     const initRelationships = () => {
+      userService()
+        .retrieve()
+        .then(res => {
+          users.value = res.data;
+        });
       messageService()
         .retrieve()
         .then(res => {
@@ -59,6 +67,7 @@ export default defineComponent({
     const validationRules = {
       name: {},
       color: {},
+      users: {},
       message: {},
     };
     const v$ = useVuelidate(validationRules, conversation as any);
@@ -71,12 +80,15 @@ export default defineComponent({
       previousState,
       isSaving,
       currentLanguage,
+      users,
       messages,
       v$,
       t$,
     };
   },
-  created(): void {},
+  created(): void {
+    this.conversation.users = [];
+  },
   methods: {
     save(): void {
       this.isSaving = true;
@@ -105,6 +117,13 @@ export default defineComponent({
             this.alertService.showHttpError(error.response);
           });
       }
+    },
+
+    getSelected(selectedVals, option): any {
+      if (selectedVals) {
+        return selectedVals.find(value => option.id === value.id) ?? option;
+      }
+      return option;
     },
   },
 });

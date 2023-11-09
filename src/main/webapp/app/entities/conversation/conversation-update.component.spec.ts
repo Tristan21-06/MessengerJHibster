@@ -8,6 +8,7 @@ import ConversationUpdate from './conversation-update.vue';
 import ConversationService from './conversation.service';
 import AlertService from '@/shared/alert/alert.service';
 
+import UserService from '@/entities/user/user.service';
 import MessageService from '@/entities/message/message.service';
 
 type ConversationUpdateComponentType = InstanceType<typeof ConversationUpdate>;
@@ -53,6 +54,11 @@ describe('Component Tests', () => {
         provide: {
           alertService,
           conversationService: () => conversationServiceStub,
+
+          userService: () =>
+            sinon.createStubInstance<UserService>(UserService, {
+              retrieve: sinon.stub().resolves({}),
+            } as any),
           messageService: () =>
             sinon.createStubInstance<MessageService>(MessageService, {
               retrieve: sinon.stub().resolves({}),

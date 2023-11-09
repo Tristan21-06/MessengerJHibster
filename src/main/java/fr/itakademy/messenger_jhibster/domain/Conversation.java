@@ -3,6 +3,8 @@ package fr.itakademy.messenger_jhibster.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -28,6 +30,16 @@ public class Conversation implements Serializable {
 
     @Column(name = "color")
     private String color;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "rel_conversation__users",
+        joinColumns = @JoinColumn(name = "conversation_id"),
+        inverseJoinColumns = @JoinColumn(name = "users_id")
+    )
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnoreProperties(value = { "conversations" }, allowSetters = true)
+    private Set<User> users = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = { "reactions", "conversations" }, allowSetters = true)
@@ -72,6 +84,29 @@ public class Conversation implements Serializable {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public Set<User> getUsers() {
+        return this.users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
+
+    public Conversation users(Set<User> users) {
+        this.setUsers(users);
+        return this;
+    }
+
+    public Conversation addUsers(User user) {
+        this.users.add(user);
+        return this;
+    }
+
+    public Conversation removeUsers(User user) {
+        this.users.remove(user);
+        return this;
     }
 
     public Message getMessage() {

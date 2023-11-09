@@ -31,6 +31,7 @@
             <th scope="row"><span v-text="t$('global.field.id')"></span></th>
             <th scope="row"><span v-text="t$('messengerJHibsterApp.conversation.name')"></span></th>
             <th scope="row"><span v-text="t$('messengerJHibsterApp.conversation.color')"></span></th>
+            <th scope="row"><span v-text="t$('messengerJHibsterApp.conversation.users')"></span></th>
             <th scope="row"><span v-text="t$('messengerJHibsterApp.conversation.message')"></span></th>
             <th scope="row"></th>
           </tr>
@@ -44,6 +45,12 @@
             </td>
             <td>{{ conversation.name }}</td>
             <td>{{ conversation.color }}</td>
+            <td>
+              <span v-for="(users, i) in conversation.users" :key="users.id"
+                >{{ i > 0 ? ', ' : '' }}
+                {{ users.id }}
+              </span>
+            </td>
             <td>
               <div v-if="conversation.message">
                 <router-link :to="{ name: 'MessageView', params: { messageId: conversation.message.id } }">{{

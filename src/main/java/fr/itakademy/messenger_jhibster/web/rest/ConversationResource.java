@@ -133,10 +133,11 @@ public class ConversationResource {
     /**
      * {@code GET  /conversations} : get all the conversations.
      *
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of conversations in body.
      */
     @GetMapping("")
-    public List<ConversationDTO> getAllConversations() {
+    public List<ConversationDTO> getAllConversations(@RequestParam(required = false, defaultValue = "true") boolean eagerload) {
         log.debug("REST request to get all Conversations");
         return conversationService.findAll();
     }

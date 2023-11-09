@@ -33,6 +33,19 @@
             </select>
           </div>
           <div class="form-group">
+            <label class="form-control-label" v-text="t$('messengerJHibsterApp.reaction.user')" for="reaction-user"></label>
+            <select class="form-control" id="reaction-user" data-cy="user" name="user" v-model="reaction.user">
+              <option v-bind:value="null"></option>
+              <option
+                v-bind:value="reaction.user && userOption.id === reaction.user.id ? reaction.user : userOption"
+                v-for="userOption in users"
+                :key="userOption.id"
+              >
+                {{ userOption.id }}
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
             <label class="form-control-label" v-text="t$('messengerJHibsterApp.reaction.message')" for="reaction-message"></label>
             <select class="form-control" id="reaction-message" data-cy="message" name="message" v-model="reaction.message">
               <option v-bind:value="null"></option>

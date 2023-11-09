@@ -1,0 +1,19 @@
+{
+  "applications": "*",
+  "changelogDate": "20231109112504",
+  "dto": "mapstruct",
+  "entityTableName": "jhi_user",
+  "fields": [],
+  "name": "User",
+  "relationships": [
+    {
+      "otherEntityName": "conversation",
+      "otherEntityRelationshipName": "users",
+      "relationshipName": "conversations",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

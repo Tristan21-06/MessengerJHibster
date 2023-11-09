@@ -17,6 +17,9 @@
             <column name="type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="user_id" type="bigint">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_reaction__user_id" />
+            </column>
             <column name="message_id" type="bigint">
                 <constraints nullable="true" />
             </column>
