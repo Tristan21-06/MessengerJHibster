@@ -48,6 +48,11 @@ public class CacheConfiguration {
             createCache(cm, fr.itakademy.messenger_jhibster.domain.User.class.getName());
             createCache(cm, fr.itakademy.messenger_jhibster.domain.Authority.class.getName());
             createCache(cm, fr.itakademy.messenger_jhibster.domain.User.class.getName() + ".authorities");
+            createCache(cm, fr.itakademy.messenger_jhibster.domain.Message.class.getName());
+            createCache(cm, fr.itakademy.messenger_jhibster.domain.Message.class.getName() + ".reactions");
+            createCache(cm, fr.itakademy.messenger_jhibster.domain.Message.class.getName() + ".conversations");
+            createCache(cm, fr.itakademy.messenger_jhibster.domain.Reaction.class.getName());
+            createCache(cm, fr.itakademy.messenger_jhibster.domain.Conversation.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

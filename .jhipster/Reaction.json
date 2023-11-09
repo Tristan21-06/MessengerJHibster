@@ -1,0 +1,16 @@
+{
+  "applications": "*",
+  "changelogDate": "20231109112604",
+  "dto": "mapstruct",
+  "entityTableName": "reaction",
+  "fields": [
+    {
+      "fieldName": "type",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Reaction",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}
