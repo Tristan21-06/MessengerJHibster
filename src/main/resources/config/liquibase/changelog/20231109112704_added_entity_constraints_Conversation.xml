@@ -22,6 +22,20 @@
                                  referencedTableName="jhi_user"
                                  />
 
+        <addForeignKeyConstraint baseColumnNames="conversation_id"
+                                 baseTableName="rel_conversation__activities"
+                                 constraintName="fk_rel_conversation__activities__conversation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="conversation"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="activities_id"
+                                 baseTableName="rel_conversation__activities"
+                                 constraintName="fk_rel_conversation__activities__activities_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="activity"
+                                 />
+
         <addForeignKeyConstraint baseColumnNames="message_id"
                                  baseTableName="conversation"
                                  constraintName="fk_conversation__message_id"

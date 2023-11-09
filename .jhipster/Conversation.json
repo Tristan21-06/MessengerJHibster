@@ -21,6 +21,13 @@
       "relationshipName": "users",
       "relationshipSide": "left",
       "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "activity",
+      "otherEntityRelationshipName": "conversations",
+      "relationshipName": "activities",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-many"
     }
   ],
   "searchEngine": "no",

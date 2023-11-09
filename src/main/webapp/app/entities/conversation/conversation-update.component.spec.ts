@@ -9,6 +9,7 @@ import ConversationService from './conversation.service';
 import AlertService from '@/shared/alert/alert.service';
 
 import UserService from '@/entities/user/user.service';
+import ActivityService from '@/entities/activity/activity.service';
 import MessageService from '@/entities/message/message.service';
 
 type ConversationUpdateComponentType = InstanceType<typeof ConversationUpdate>;
@@ -57,6 +58,10 @@ describe('Component Tests', () => {
 
           userService: () =>
             sinon.createStubInstance<UserService>(UserService, {
+              retrieve: sinon.stub().resolves({}),
+            } as any),
+          activityService: () =>
+            sinon.createStubInstance<ActivityService>(ActivityService, {
               retrieve: sinon.stub().resolves({}),
             } as any),
           messageService: () =>

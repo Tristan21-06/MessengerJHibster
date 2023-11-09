@@ -19,6 +19,8 @@ public class ConversationDTO implements Serializable {
 
     private Set<UserDTO> users = new HashSet<>();
 
+    private Set<ActivityDTO> activities = new HashSet<>();
+
     private MessageDTO message;
 
     public Long getId() {
@@ -51,6 +53,14 @@ public class ConversationDTO implements Serializable {
 
     public void setUsers(Set<UserDTO> users) {
         this.users = users;
+    }
+
+    public Set<ActivityDTO> getActivities() {
+        return activities;
+    }
+
+    public void setActivities(Set<ActivityDTO> activities) {
+        this.activities = activities;
     }
 
     public MessageDTO getMessage() {
@@ -90,6 +100,7 @@ public class ConversationDTO implements Serializable {
             ", name='" + getName() + "'" +
             ", color='" + getColor() + "'" +
             ", users=" + getUsers() +
+            ", activities=" + getActivities() +
             ", message=" + getMessage() +
             "}";
     }
