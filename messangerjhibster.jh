@@ -20,13 +20,13 @@ entity Conversation {
 }
 
 entity Activity {
-	imageAcivity String
+	imageActivity String
 }
 
 relationship ManyToMany {
 	// conversations
 	Conversation{users} to User{conversations}
-    Conversation{activitys} to Activity{conversations}
+    Conversation{activities} to Activity{conversations}
 }
 
 relationship OneToMany {
