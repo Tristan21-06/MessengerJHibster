@@ -11,7 +11,7 @@ public class ActivityDTO implements Serializable {
 
     private Long id;
 
-    private String imageAcivity;
+    private String imageActivity;
 
     public Long getId() {
         return id;
@@ -21,12 +21,12 @@ public class ActivityDTO implements Serializable {
         this.id = id;
     }
 
-    public String getImageAcivity() {
-        return imageAcivity;
+    public String getImageActivity() {
+        return imageActivity;
     }
 
-    public void setImageAcivity(String imageAcivity) {
-        this.imageAcivity = imageAcivity;
+    public void setImageActivity(String imageActivity) {
+        this.imageActivity = imageActivity;
     }
 
     @Override
@@ -55,7 +55,7 @@ public class ActivityDTO implements Serializable {
     public String toString() {
         return "ActivityDTO{" +
             "id=" + getId() +
-            ", imageAcivity='" + getImageAcivity() + "'" +
+            ", imageActivity='" + getImageActivity() + "'" +
             "}";
     }
 }

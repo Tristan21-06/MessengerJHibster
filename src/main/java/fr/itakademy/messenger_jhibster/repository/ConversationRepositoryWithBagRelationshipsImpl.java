@@ -21,7 +21,7 @@ public class ConversationRepositoryWithBagRelationshipsImpl implements Conversat
 
     @Override
     public Optional<Conversation> fetchBagRelationships(Optional<Conversation> conversation) {
-        return conversation.map(this::fetchUsers).map(this::fetchActivitys);
+        return conversation.map(this::fetchUsers).map(this::fetchActivities);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class ConversationRepositoryWithBagRelationshipsImpl implements Conversat
 
     @Override
     public List<Conversation> fetchBagRelationships(List<Conversation> conversations) {
-        return Optional.of(conversations).map(this::fetchUsers).map(this::fetchActivitys).orElse(Collections.emptyList());
+        return Optional.of(conversations).map(this::fetchUsers).map(this::fetchActivities).orElse(Collections.emptyList());
     }
 
     Conversation fetchUsers(Conversation result) {
@@ -62,22 +62,22 @@ public class ConversationRepositoryWithBagRelationshipsImpl implements Conversat
         return result;
     }
 
-    Conversation fetchActivitys(Conversation result) {
+    Conversation fetchActivities(Conversation result) {
         return entityManager
             .createQuery(
-                "select conversation from Conversation conversation left join fetch conversation.activitys where conversation.id = :id",
+                "select conversation from Conversation conversation left join fetch conversation.activities where conversation.id = :id",
                 Conversation.class
             )
             .setParameter("id", result.getId())
             .getSingleResult();
     }
 
-    List<Conversation> fetchActivitys(List<Conversation> conversations) {
+    List<Conversation> fetchActivities(List<Conversation> conversations) {
         HashMap<Object, Integer> order = new HashMap<>();
         IntStream.range(0, conversations.size()).forEach(index -> order.put(conversations.get(index).getId(), index));
         List<Conversation> result = entityManager
             .createQuery(
-                "select conversation from Conversation conversation left join fetch conversation.activitys where conversation in :conversations",
+                "select conversation from Conversation conversation left join fetch conversation.activities where conversation in :conversations",
                 Conversation.class
             )
             .setParameter("conversations", conversations)

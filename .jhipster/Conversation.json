@@ -25,7 +25,7 @@
     {
       "otherEntityName": "activity",
       "otherEntityRelationshipName": "conversations",
-      "relationshipName": "activitys",
+      "relationshipName": "activities",
       "relationshipSide": "left",
       "relationshipType": "many-to-many"
     }

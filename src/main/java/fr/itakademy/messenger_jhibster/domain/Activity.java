@@ -25,12 +25,12 @@ public class Activity implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "image_acivity")
-    private String imageAcivity;
+    @Column(name = "image_activity")
+    private String imageActivity;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "activitys")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "activities")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "users", "activitys", "message" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "users", "activities", "message" }, allowSetters = true)
     private Set<Conversation> conversations = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -48,17 +48,17 @@ public class Activity implements Serializable {
         this.id = id;
     }
 
-    public String getImageAcivity() {
-        return this.imageAcivity;
+    public String getImageActivity() {
+        return this.imageActivity;
     }
 
-    public Activity imageAcivity(String imageAcivity) {
-        this.setImageAcivity(imageAcivity);
+    public Activity imageActivity(String imageActivity) {
+        this.setImageActivity(imageActivity);
         return this;
     }
 
-    public void setImageAcivity(String imageAcivity) {
-        this.imageAcivity = imageAcivity;
+    public void setImageActivity(String imageActivity) {
+        this.imageActivity = imageActivity;
     }
 
     public Set<Conversation> getConversations() {
@@ -67,10 +67,10 @@ public class Activity implements Serializable {
 
     public void setConversations(Set<Conversation> conversations) {
         if (this.conversations != null) {
-            this.conversations.forEach(i -> i.removeActivitys(this));
+            this.conversations.forEach(i -> i.removeActivities(this));
         }
         if (conversations != null) {
-            conversations.forEach(i -> i.addActivitys(this));
+            conversations.forEach(i -> i.addActivities(this));
         }
         this.conversations = conversations;
     }
@@ -82,13 +82,13 @@ public class Activity implements Serializable {
 
     public Activity addConversations(Conversation conversation) {
         this.conversations.add(conversation);
-        conversation.getActivitys().add(this);
+        conversation.getActivities().add(this);
         return this;
     }
 
     public Activity removeConversations(Conversation conversation) {
         this.conversations.remove(conversation);
-        conversation.getActivitys().remove(this);
+        conversation.getActivities().remove(this);
         return this;
     }
 
@@ -116,7 +116,7 @@ public class Activity implements Serializable {
     public String toString() {
         return "Activity{" +
             "id=" + getId() +
-            ", imageAcivity='" + getImageAcivity() + "'" +
+            ", imageActivity='" + getImageActivity() + "'" +
             "}";
     }
 }

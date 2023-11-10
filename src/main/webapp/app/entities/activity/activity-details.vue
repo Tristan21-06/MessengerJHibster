@@ -7,10 +7,10 @@
         </h2>
         <dl class="row jh-entity-details">
           <dt>
-            <span v-text="t$('messengerJHibsterApp.activity.imageAcivity')"></span>
+            <span v-text="t$('messengerJHibsterApp.activity.imageActivity')"></span>
           </dt>
           <dd>
-            <span>{{ activity.imageAcivity }}</span>
+            <span>{{ activity.imageActivity }}</span>
           </dd>
         </dl>
         <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

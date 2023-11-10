@@ -32,7 +32,7 @@
             <th scope="row"><span v-text="t$('messengerJHibsterApp.conversation.name')"></span></th>
             <th scope="row"><span v-text="t$('messengerJHibsterApp.conversation.color')"></span></th>
             <th scope="row"><span v-text="t$('messengerJHibsterApp.conversation.users')"></span></th>
-            <th scope="row"><span v-text="t$('messengerJHibsterApp.conversation.activitys')"></span></th>
+            <th scope="row"><span v-text="t$('messengerJHibsterApp.conversation.activities')"></span></th>
             <th scope="row"><span v-text="t$('messengerJHibsterApp.conversation.message')"></span></th>
             <th scope="row"></th>
           </tr>
@@ -53,10 +53,10 @@
               </span>
             </td>
             <td>
-              <span v-for="(activitys, i) in conversation.activitys" :key="activitys.id"
+              <span v-for="(activities, i) in conversation.activities" :key="activities.id"
                 >{{ i > 0 ? ', ' : '' }}
-                <router-link class="form-control-static" :to="{ name: 'ActivityView', params: { activityId: activitys.id } }">{{
-                  activitys.id
+                <router-link class="form-control-static" :to="{ name: 'ActivityView', params: { activityId: activities.id } }">{{
+                  activities.id
                 }}</router-link>
               </span>
             </td>

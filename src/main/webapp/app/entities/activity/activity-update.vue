@@ -13,15 +13,19 @@
             <input type="text" class="form-control" id="id" name="id" v-model="activity.id" readonly />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="t$('messengerJHibsterApp.activity.imageAcivity')" for="activity-imageAcivity"></label>
+            <label
+              class="form-control-label"
+              v-text="t$('messengerJHibsterApp.activity.imageActivity')"
+              for="activity-imageActivity"
+            ></label>
             <input
               type="text"
               class="form-control"
-              name="imageAcivity"
-              id="activity-imageAcivity"
-              data-cy="imageAcivity"
-              :class="{ valid: !v$.imageAcivity.$invalid, invalid: v$.imageAcivity.$invalid }"
-              v-model="v$.imageAcivity.$model"
+              name="imageActivity"
+              id="activity-imageActivity"
+              data-cy="imageActivity"
+              :class="{ valid: !v$.imageActivity.$invalid, invalid: v$.imageActivity.$invalid }"
+              v-model="v$.imageActivity.$model"
             />
           </div>
         </div>
