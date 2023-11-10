@@ -26,7 +26,7 @@ entity Activity {
 relationship ManyToMany {
 	// conversations
 	Conversation{users} to User{conversations}
-    Conversation{activities} to Activity{conversations}
+    Conversation{activitys} to Activity{conversations}
 }
 
 relationship OneToMany {

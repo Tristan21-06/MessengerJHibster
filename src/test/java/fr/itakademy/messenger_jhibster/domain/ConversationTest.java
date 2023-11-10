@@ -27,21 +27,21 @@ class ConversationTest {
     }
 
     @Test
-    void activitiesTest() throws Exception {
+    void activitysTest() throws Exception {
         Conversation conversation = getConversationRandomSampleGenerator();
         Activity activityBack = getActivityRandomSampleGenerator();
 
-        conversation.addActivities(activityBack);
-        assertThat(conversation.getActivities()).containsOnly(activityBack);
+        conversation.addActivitys(activityBack);
+        assertThat(conversation.getActivitys()).containsOnly(activityBack);
 
-        conversation.removeActivities(activityBack);
-        assertThat(conversation.getActivities()).doesNotContain(activityBack);
+        conversation.removeActivitys(activityBack);
+        assertThat(conversation.getActivitys()).doesNotContain(activityBack);
 
-        conversation.activities(new HashSet<>(Set.of(activityBack)));
-        assertThat(conversation.getActivities()).containsOnly(activityBack);
+        conversation.activitys(new HashSet<>(Set.of(activityBack)));
+        assertThat(conversation.getActivitys()).containsOnly(activityBack);
 
-        conversation.setActivities(new HashSet<>());
-        assertThat(conversation.getActivities()).doesNotContain(activityBack);
+        conversation.setActivitys(new HashSet<>());
+        assertThat(conversation.getActivitys()).doesNotContain(activityBack);
     }
 
     @Test
