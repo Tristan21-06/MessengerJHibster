@@ -28,9 +28,9 @@ public class Activity implements Serializable {
     @Column(name = "image_acivity")
     private String imageAcivity;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "activities")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "activitys")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "users", "activities", "message" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "users", "activitys", "message" }, allowSetters = true)
     private Set<Conversation> conversations = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -67,10 +67,10 @@ public class Activity implements Serializable {
 
     public void setConversations(Set<Conversation> conversations) {
         if (this.conversations != null) {
-            this.conversations.forEach(i -> i.removeActivities(this));
+            this.conversations.forEach(i -> i.removeActivitys(this));
         }
         if (conversations != null) {
-            conversations.forEach(i -> i.addActivities(this));
+            conversations.forEach(i -> i.addActivitys(this));
         }
         this.conversations = conversations;
     }
@@ -82,13 +82,13 @@ public class Activity implements Serializable {
 
     public Activity addConversations(Conversation conversation) {
         this.conversations.add(conversation);
-        conversation.getActivities().add(this);
+        conversation.getActivitys().add(this);
         return this;
     }
 
     public Activity removeConversations(Conversation conversation) {
         this.conversations.remove(conversation);
-        conversation.getActivities().remove(this);
+        conversation.getActivitys().remove(this);
         return this;
     }
 

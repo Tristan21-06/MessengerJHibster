@@ -18,12 +18,12 @@ import org.mapstruct.*;
 @Mapper(componentModel = "spring")
 public interface ConversationMapper extends EntityMapper<ConversationDTO, Conversation> {
     @Mapping(target = "users", source = "users", qualifiedByName = "userIdSet")
-    @Mapping(target = "activities", source = "activities", qualifiedByName = "activityIdSet")
+    @Mapping(target = "activitys", source = "activitys", qualifiedByName = "activityIdSet")
     @Mapping(target = "message", source = "message", qualifiedByName = "messageId")
     ConversationDTO toDto(Conversation s);
 
     @Mapping(target = "removeUsers", ignore = true)
-    @Mapping(target = "removeActivities", ignore = true)
+    @Mapping(target = "removeActivitys", ignore = true)
     Conversation toEntity(ConversationDTO conversationDTO);
 
     @Named("userId")

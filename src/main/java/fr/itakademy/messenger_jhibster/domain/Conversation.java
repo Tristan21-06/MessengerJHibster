@@ -43,13 +43,13 @@ public class Conversation implements Serializable {
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
-        name = "rel_conversation__activities",
+        name = "rel_conversation__activitys",
         joinColumns = @JoinColumn(name = "conversation_id"),
-        inverseJoinColumns = @JoinColumn(name = "activities_id")
+        inverseJoinColumns = @JoinColumn(name = "activitys_id")
     )
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(value = { "conversations" }, allowSetters = true)
-    private Set<Activity> activities = new HashSet<>();
+    private Set<Activity> activitys = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = { "reactions", "conversations" }, allowSetters = true)
@@ -119,26 +119,26 @@ public class Conversation implements Serializable {
         return this;
     }
 
-    public Set<Activity> getActivities() {
-        return this.activities;
+    public Set<Activity> getActivitys() {
+        return this.activitys;
     }
 
-    public void setActivities(Set<Activity> activities) {
-        this.activities = activities;
+    public void setActivitys(Set<Activity> activities) {
+        this.activitys = activities;
     }
 
-    public Conversation activities(Set<Activity> activities) {
-        this.setActivities(activities);
+    public Conversation activitys(Set<Activity> activities) {
+        this.setActivitys(activities);
         return this;
     }
 
-    public Conversation addActivities(Activity activity) {
-        this.activities.add(activity);
+    public Conversation addActivitys(Activity activity) {
+        this.activitys.add(activity);
         return this;
     }
 
-    public Conversation removeActivities(Activity activity) {
-        this.activities.remove(activity);
+    public Conversation removeActivitys(Activity activity) {
+        this.activitys.remove(activity);
         return this;
     }
 

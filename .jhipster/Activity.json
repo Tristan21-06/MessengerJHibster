@@ -13,7 +13,7 @@
   "relationships": [
     {
       "otherEntityName": "conversation",
-      "otherEntityRelationshipName": "activities",
+      "otherEntityRelationshipName": "activitys",
       "relationshipName": "conversations",
       "relationshipSide": "right",
       "relationshipType": "many-to-many"

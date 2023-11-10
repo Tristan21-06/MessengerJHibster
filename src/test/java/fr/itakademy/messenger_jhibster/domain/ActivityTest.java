@@ -32,18 +32,18 @@ class ActivityTest {
 
         activity.addConversations(conversationBack);
         assertThat(activity.getConversations()).containsOnly(conversationBack);
-        assertThat(conversationBack.getActivities()).containsOnly(activity);
+        assertThat(conversationBack.getActivitys()).containsOnly(activity);
 
         activity.removeConversations(conversationBack);
         assertThat(activity.getConversations()).doesNotContain(conversationBack);
-        assertThat(conversationBack.getActivities()).doesNotContain(activity);
+        assertThat(conversationBack.getActivitys()).doesNotContain(activity);
 
         activity.conversations(new HashSet<>(Set.of(conversationBack)));
         assertThat(activity.getConversations()).containsOnly(conversationBack);
-        assertThat(conversationBack.getActivities()).containsOnly(activity);
+        assertThat(conversationBack.getActivitys()).containsOnly(activity);
 
         activity.setConversations(new HashSet<>());
         assertThat(activity.getConversations()).doesNotContain(conversationBack);
-        assertThat(conversationBack.getActivities()).doesNotContain(activity);
+        assertThat(conversationBack.getActivitys()).doesNotContain(activity);
     }
 }

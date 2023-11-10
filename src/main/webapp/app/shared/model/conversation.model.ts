@@ -7,7 +7,7 @@ export interface IConversation {
   name?: string | null;
   color?: string | null;
   users?: IUser[] | null;
-  activities?: IActivity[] | null;
+  activitys?: IActivity[] | null;
   message?: IMessage | null;
 }
 
@@ -17,7 +17,7 @@ export class Conversation implements IConversation {
     public name?: string | null,
     public color?: string | null,
     public users?: IUser[] | null,
-    public activities?: IActivity[] | null,
+    public activitys?: IActivity[] | null,
     public message?: IMessage | null,
   ) {}
 }

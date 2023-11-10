@@ -19,7 +19,7 @@ public class ConversationDTO implements Serializable {
 
     private Set<UserDTO> users = new HashSet<>();
 
-    private Set<ActivityDTO> activities = new HashSet<>();
+    private Set<ActivityDTO> activitys = new HashSet<>();
 
     private MessageDTO message;
 
@@ -55,12 +55,12 @@ public class ConversationDTO implements Serializable {
         this.users = users;
     }
 
-    public Set<ActivityDTO> getActivities() {
-        return activities;
+    public Set<ActivityDTO> getActivitys() {
+        return activitys;
     }
 
-    public void setActivities(Set<ActivityDTO> activities) {
-        this.activities = activities;
+    public void setActivitys(Set<ActivityDTO> activitys) {
+        this.activitys = activitys;
     }
 
     public MessageDTO getMessage() {
@@ -100,7 +100,7 @@ public class ConversationDTO implements Serializable {
             ", name='" + getName() + "'" +
             ", color='" + getColor() + "'" +
             ", users=" + getUsers() +
-            ", activities=" + getActivities() +
+            ", activitys=" + getActivitys() +
             ", message=" + getMessage() +
             "}";
     }

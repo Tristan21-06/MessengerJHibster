@@ -28,12 +28,12 @@
             </span>
           </dd>
           <dt>
-            <span v-text="t$('messengerJHibsterApp.conversation.activities')"></span>
+            <span v-text="t$('messengerJHibsterApp.conversation.activitys')"></span>
           </dt>
           <dd>
-            <span v-for="(activities, i) in conversation.activities" :key="activities.id"
+            <span v-for="(activitys, i) in conversation.activitys" :key="activitys.id"
               >{{ i > 0 ? ', ' : '' }}
-              <router-link :to="{ name: 'ActivityView', params: { activityId: activities.id } }">{{ activities.id }}</router-link>
+              <router-link :to="{ name: 'ActivityView', params: { activityId: activitys.id } }">{{ activitys.id }}</router-link>
             </span>
           </dd>
           <dt>
