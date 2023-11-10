@@ -31,8 +31,8 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class ActivityResourceIT {
 
-    private static final String DEFAULT_IMAGE_ACIVITY = "AAAAAAAAAA";
-    private static final String UPDATED_IMAGE_ACIVITY = "BBBBBBBBBB";
+    private static final String DEFAULT_IMAGE_ACTIVITY = "AAAAAAAAAA";
+    private static final String UPDATED_IMAGE_ACTIVITY = "BBBBBBBBBB";
 
     private static final String ENTITY_API_URL = "/api/activities";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -61,7 +61,7 @@ class ActivityResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Activity createEntity(EntityManager em) {
-        Activity activity = new Activity().imageAcivity(DEFAULT_IMAGE_ACIVITY);
+        Activity activity = new Activity().imageActivity(DEFAULT_IMAGE_ACTIVITY);
         return activity;
     }
 
@@ -72,7 +72,7 @@ class ActivityResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Activity createUpdatedEntity(EntityManager em) {
-        Activity activity = new Activity().imageAcivity(UPDATED_IMAGE_ACIVITY);
+        Activity activity = new Activity().imageActivity(UPDATED_IMAGE_ACTIVITY);
         return activity;
     }
 
@@ -95,7 +95,7 @@ class ActivityResourceIT {
         List<Activity> activityList = activityRepository.findAll();
         assertThat(activityList).hasSize(databaseSizeBeforeCreate + 1);
         Activity testActivity = activityList.get(activityList.size() - 1);
-        assertThat(testActivity.getImageAcivity()).isEqualTo(DEFAULT_IMAGE_ACIVITY);
+        assertThat(testActivity.getImageActivity()).isEqualTo(DEFAULT_IMAGE_ACTIVITY);
     }
 
     @Test
@@ -129,7 +129,7 @@ class ActivityResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(activity.getId().intValue())))
-            .andExpect(jsonPath("$.[*].imageAcivity").value(hasItem(DEFAULT_IMAGE_ACIVITY)));
+            .andExpect(jsonPath("$.[*].imageActivity").value(hasItem(DEFAULT_IMAGE_ACTIVITY)));
     }
 
     @Test
@@ -144,7 +144,7 @@ class ActivityResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(activity.getId().intValue()))
-            .andExpect(jsonPath("$.imageAcivity").value(DEFAULT_IMAGE_ACIVITY));
+            .andExpect(jsonPath("$.imageActivity").value(DEFAULT_IMAGE_ACTIVITY));
     }
 
     @Test
@@ -166,7 +166,7 @@ class ActivityResourceIT {
         Activity updatedActivity = activityRepository.findById(activity.getId()).orElseThrow();
         // Disconnect from session so that the updates on updatedActivity are not directly saved in db
         em.detach(updatedActivity);
-        updatedActivity.imageAcivity(UPDATED_IMAGE_ACIVITY);
+        updatedActivity.imageActivity(UPDATED_IMAGE_ACTIVITY);
         ActivityDTO activityDTO = activityMapper.toDto(updatedActivity);
 
         restActivityMockMvc
@@ -181,7 +181,7 @@ class ActivityResourceIT {
         List<Activity> activityList = activityRepository.findAll();
         assertThat(activityList).hasSize(databaseSizeBeforeUpdate);
         Activity testActivity = activityList.get(activityList.size() - 1);
-        assertThat(testActivity.getImageAcivity()).isEqualTo(UPDATED_IMAGE_ACIVITY);
+        assertThat(testActivity.getImageActivity()).isEqualTo(UPDATED_IMAGE_ACTIVITY);
     }
 
     @Test
@@ -261,7 +261,7 @@ class ActivityResourceIT {
         Activity partialUpdatedActivity = new Activity();
         partialUpdatedActivity.setId(activity.getId());
 
-        partialUpdatedActivity.imageAcivity(UPDATED_IMAGE_ACIVITY);
+        partialUpdatedActivity.imageActivity(UPDATED_IMAGE_ACTIVITY);
 
         restActivityMockMvc
             .perform(
@@ -275,7 +275,7 @@ class ActivityResourceIT {
         List<Activity> activityList = activityRepository.findAll();
         assertThat(activityList).hasSize(databaseSizeBeforeUpdate);
         Activity testActivity = activityList.get(activityList.size() - 1);
-        assertThat(testActivity.getImageAcivity()).isEqualTo(UPDATED_IMAGE_ACIVITY);
+        assertThat(testActivity.getImageActivity()).isEqualTo(UPDATED_IMAGE_ACTIVITY);
     }
 
     @Test
@@ -290,7 +290,7 @@ class ActivityResourceIT {
         Activity partialUpdatedActivity = new Activity();
         partialUpdatedActivity.setId(activity.getId());
 
-        partialUpdatedActivity.imageAcivity(UPDATED_IMAGE_ACIVITY);
+        partialUpdatedActivity.imageActivity(UPDATED_IMAGE_ACTIVITY);
 
         restActivityMockMvc
             .perform(
@@ -304,7 +304,7 @@ class ActivityResourceIT {
         List<Activity> activityList = activityRepository.findAll();
         assertThat(activityList).hasSize(databaseSizeBeforeUpdate);
         Activity testActivity = activityList.get(activityList.size() - 1);
-        assertThat(testActivity.getImageAcivity()).isEqualTo(UPDATED_IMAGE_ACIVITY);
+        assertThat(testActivity.getImageActivity()).isEqualTo(UPDATED_IMAGE_ACTIVITY);
     }
 
     @Test

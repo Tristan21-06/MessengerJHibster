@@ -29,7 +29,7 @@
         <thead>
           <tr>
             <th scope="row"><span v-text="t$('global.field.id')"></span></th>
-            <th scope="row"><span v-text="t$('messengerJHibsterApp.activity.imageAcivity')"></span></th>
+            <th scope="row"><span v-text="t$('messengerJHibsterApp.activity.imageActivity')"></span></th>
             <th scope="row"></th>
           </tr>
         </thead>
@@ -38,7 +38,7 @@
             <td>
               <router-link :to="{ name: 'ActivityView', params: { activityId: activity.id } }">{{ activity.id }}</router-link>
             </td>
-            <td>{{ activity.imageAcivity }}</td>
+            <td>{{ activity.imageActivity }}</td>
             <td class="text-right">
               <div class="btn-group">
                 <router-link :to="{ name: 'ActivityView', params: { activityId: activity.id } }" custom v-slot="{ navigate }">

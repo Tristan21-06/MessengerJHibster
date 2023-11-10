@@ -10,14 +10,14 @@ public class ActivityTestSamples {
     private static final AtomicLong longCount = new AtomicLong(random.nextInt() + (2 * Integer.MAX_VALUE));
 
     public static Activity getActivitySample1() {
-        return new Activity().id(1L).imageAcivity("imageAcivity1");
+        return new Activity().id(1L).imageActivity("imageActivity1");
     }
 
     public static Activity getActivitySample2() {
-        return new Activity().id(2L).imageAcivity("imageAcivity2");
+        return new Activity().id(2L).imageActivity("imageActivity2");
     }
 
     public static Activity getActivityRandomSampleGenerator() {
-        return new Activity().id(longCount.incrementAndGet()).imageAcivity(UUID.randomUUID().toString());
+        return new Activity().id(longCount.incrementAndGet()).imageActivity(UUID.randomUUID().toString());
     }
 }

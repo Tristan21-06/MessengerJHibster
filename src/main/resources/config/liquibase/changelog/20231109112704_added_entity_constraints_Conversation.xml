@@ -23,15 +23,15 @@
                                  />
 
         <addForeignKeyConstraint baseColumnNames="conversation_id"
-                                 baseTableName="rel_conversation__activitys"
-                                 constraintName="fk_rel_conversation__activitys__conversation_id"
+                                 baseTableName="rel_conversation__activities"
+                                 constraintName="fk_rel_conversation__activities__conversation_id"
                                  referencedColumnNames="id"
                                  referencedTableName="conversation"
                                  />
 
-        <addForeignKeyConstraint baseColumnNames="activitys_id"
-                                 baseTableName="rel_conversation__activitys"
-                                 constraintName="fk_rel_conversation__activitys__activitys_id"
+        <addForeignKeyConstraint baseColumnNames="activities_id"
+                                 baseTableName="rel_conversation__activities"
+                                 constraintName="fk_rel_conversation__activities__activities_id"
                                  referencedColumnNames="id"
                                  referencedTableName="activity"
                                  />

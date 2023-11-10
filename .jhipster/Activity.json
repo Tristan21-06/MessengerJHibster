@@ -5,7 +5,7 @@
   "entityTableName": "activity",
   "fields": [
     {
-      "fieldName": "imageAcivity",
+      "fieldName": "imageActivity",
       "fieldType": "String"
     }
   ],
@@ -13,7 +13,7 @@
   "relationships": [
     {
       "otherEntityName": "conversation",
-      "otherEntityRelationshipName": "activitys",
+      "otherEntityRelationshipName": "activities",
       "relationshipName": "conversations",
       "relationshipSide": "right",
       "relationshipType": "many-to-many"

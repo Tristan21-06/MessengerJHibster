@@ -45,7 +45,7 @@ export default defineComponent({
     const { t: t$ } = useI18n();
     const validations = useValidation();
     const validationRules = {
-      imageAcivity: {},
+      imageActivity: {},
       conversations: {},
     };
     const v$ = useVuelidate(validationRules, activity as any);

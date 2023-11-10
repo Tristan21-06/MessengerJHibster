@@ -53,18 +53,18 @@
             </select>
           </div>
           <div class="form-group">
-            <label v-text="t$('messengerJHibsterApp.conversation.activitys')" for="conversation-activitys"></label>
+            <label v-text="t$('messengerJHibsterApp.conversation.activities')" for="conversation-activities"></label>
             <select
               class="form-control"
-              id="conversation-activitys"
-              data-cy="activitys"
+              id="conversation-activities"
+              data-cy="activities"
               multiple
-              name="activitys"
-              v-if="conversation.activitys !== undefined"
-              v-model="conversation.activitys"
+              name="activities"
+              v-if="conversation.activities !== undefined"
+              v-model="conversation.activities"
             >
               <option
-                v-bind:value="getSelected(conversation.activitys, activityOption)"
+                v-bind:value="getSelected(conversation.activities, activityOption)"
                 v-for="activityOption in activities"
                 :key="activityOption.id"
               >

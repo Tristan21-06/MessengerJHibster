@@ -79,7 +79,7 @@ export default defineComponent({
       name: {},
       color: {},
       users: {},
-      activitys: {},
+      activities: {},
       message: {},
     };
     const v$ = useVuelidate(validationRules, conversation as any);
@@ -101,7 +101,7 @@ export default defineComponent({
   },
   created(): void {
     this.conversation.users = [];
-    this.conversation.activitys = [];
+    this.conversation.activities = [];
   },
   methods: {
     save(): void {

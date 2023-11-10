@@ -81,7 +81,7 @@ describe('Service Tests', () => {
       it('should update a Activity', async () => {
         const returnedFromService = Object.assign(
           {
-            imageAcivity: 'BBBBBB',
+            imageActivity: 'BBBBBB',
           },
           elemDefault,
         );
@@ -131,7 +131,7 @@ describe('Service Tests', () => {
       it('should return a list of Activity', async () => {
         const returnedFromService = Object.assign(
           {
-            imageAcivity: 'BBBBBB',
+            imageActivity: 'BBBBBB',
           },
           elemDefault,
         );
